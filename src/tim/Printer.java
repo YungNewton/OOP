@@ -24,7 +24,14 @@ public class Printer {
     public int printPages(int pages){
         int pagesToPrint = pages;
         if(duplex){
-            pagesToPrint = pages/2;
+            if (pages==1){
+                pagesToPrint = 1;
+            }
+            if(pages%2==0){
+                pagesToPrint = pages/2;
+            }else{
+                pagesToPrint = pages/2 +1;
+            }
         }else{
             pagesToPrint = pages;
         }

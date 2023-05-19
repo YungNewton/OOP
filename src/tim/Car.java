@@ -13,14 +13,14 @@ public class Car {
         this.name = name;
         this.cylinders = cylinders;
     }
-    public void startEngine(){
-        System.out.println("Car -> startEngine()");
+    public String startEngine(){
+        return (this.getClass().getSimpleName()+" -> startEngine()");
     }
-    public void accelerate(){
-        System.out.println("Car -> accelerate()");
+    public String accelerate(){
+        return (this.getClass().getSimpleName()+" -> accelerate()");
     }
-    public void brake(){
-        System.out.println(this.getClass().getSimpleName()+" -> brake()");
+    public String brake(){
+        return (this.getClass().getSimpleName()+" -> brake()");
     }
     public int getCylinders(){
         return this.cylinders;

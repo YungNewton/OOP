@@ -4,30 +4,34 @@ public class Printer {
     private int tonerLevel;
     private int pagesPrinted;
     private boolean duplex;
-
-    public Printer(int pagesPrinted){
-        this.tonerLevel = 100;
-        this.duplex = true;
-        this.pagesPrinted = pagesPrinted;
+    public Printer(int tonerLevel, boolean duplex){
+        if (tonerLevel>-1 && tonerLevel <= 100){
+            this.tonerLevel = tonerLevel;
+        } else{
+            this.tonerLevel = -1;
+        }
+        this.duplex = duplex;
+        this.pagesPrinted = 0;
     }
     public int addToner(int tonerAmount){
-        if (tonerAmount<0){
-            System.out.println("Toner amount can't be negative");
-        }else if (this.tonerLevel + tonerAmount >= 100){
-            this.tonerLevel = 100;
-            System.out.println("Toner level 100%");
-        }else {
+        if(tonerAmount>0&&tonerAmount<=100&&this.tonerLevel +tonerAmount <=100){
             this.tonerLevel = this.tonerLevel + tonerAmount;
-            System.out.println("Toner level "+ this.tonerLevel+"%");
+            return this.tonerLevel;
+        }else{
+            return -1;
         }
-        return this.tonerLevel;
     }
-    public int printPages(int pagesToBePrinted){
-        if (duplex){
-            this.pagesPrinted = pagesToBePrinted/2;
-        } else{
-            this.pagesPrinted = pagesToBePrinted;
+    public int printPages(int pages){
+        int pagesToPrint = pages;
+        if(duplex){
+            pagesToPrint = pages/2;
+        }else{
+            pagesToPrint = pages;
         }
+        this.pagesPrinted = this.pagesPrinted + pagesToPrint;
+        return pagesToPrint;
+    }
+    public int getPagesPrinted(){
         return this.pagesPrinted;
     }
 }

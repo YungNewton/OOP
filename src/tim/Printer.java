@@ -11,7 +11,9 @@ public class Printer {
         this.pagesPrinted = pagesPrinted;
     }
     public int addToner(int tonerAmount){
-        if (this.tonerLevel + tonerAmount >= 100){
+        if (tonerAmount<0){
+            System.out.println("Toner amount can't be negative");
+        }else if (this.tonerLevel + tonerAmount >= 100){
             this.tonerLevel = 100;
             System.out.println("Toner level 100%");
         }else {
@@ -20,5 +22,12 @@ public class Printer {
         }
         return this.tonerLevel;
     }
-
+    public int printPages(int pagesToBePrinted){
+        if (duplex){
+            this.pagesPrinted = pagesToBePrinted/2;
+        } else{
+            this.pagesPrinted = pagesToBePrinted;
+        }
+        return this.pagesPrinted;
+    }
 }
